@@ -1,0 +1,12 @@
+#!/bin/sh
+# script to rotate logs
+
+log=$1
+size=`ls -l $log | awk '{print $5}'`
+if [ $size -gt 50000 ] 
+then
+	#echo "rotating $log";
+	bzip2 < $log > $log.0.bz2 
+	chmod 0644 $log.0.bz2
+	> $log
+fi
