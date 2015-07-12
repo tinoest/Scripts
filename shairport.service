@@ -1,0 +1,8 @@
+[Unit]
+Description=A Apple AirPlay Service
+After=network.target
+[Service]
+Type=simple
+PIDFile=/run/shairport.pid
+ExecStart=/usr/local/bin/shairport -d -a "RasPi" \
+--daemon --pidfile /run/shairport.pid
